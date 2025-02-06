@@ -17,3 +17,5 @@ Route::get('collections', [\App\Http\Controllers\ImageController::class, 'collec
 Route::get('contribution', [\App\Http\Controllers\ImageController::class, 'getContributionData']);
 // 图片转视频接口
 Route::post('images2video', [\App\Http\Controllers\ImageController::class, 'imagesMergeVideo']);
+// 视频列表接口
+Route::get('videos', [\App\Http\Controllers\VideoController::class, 'index']);

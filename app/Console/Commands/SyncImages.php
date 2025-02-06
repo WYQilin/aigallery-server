@@ -23,7 +23,7 @@ class SyncImages extends Command
      *
      * @var string
      */
-    protected $description = '同步目录中的图片信息到数据库中。';
+    protected $description = '同步目录中的图片信息到数据库中。暂时只支持jpeg格式的图片。';
 
     /**
      * 允许的图片扩展名类型

@@ -19,6 +19,7 @@ services:
             IGNITION_LOCAL_SITES_PATH: '${PWD}'
         volumes:
             - '.:/var/www/html'
+#            - '[你的图片目录，如stable-diffusion-webui/outputs/txt2img-images]:/var/www/html/storage/ai_images'
         networks:
             - sail
         depends_on:

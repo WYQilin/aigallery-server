@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ImagesMergeVideo;
 use App\Models\Image;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class ImageController extends Controller
      * @return mixed
      */
     public function index(Request $request) {
-        $query = Image::select('*');
+        $query = Image::select(['id', 'height', 'width', 'modify_time', 'modify_date', 'file_path']);
         // 过滤条件：日期筛选
         $date = $request->input('date');
         if (!empty($date)) {
@@ -141,24 +142,19 @@ class ImageController extends Controller
         }
     }
 
+    /**
+     * 多张图片合成幻灯片视频
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function imagesMergeVideo(Request $request)
     {
         $images = $request->input('images');
-        $exitCode = Artisan::call('ffmpeg:i2v', ['--i' => $images]);
-        Log::info($exitCode);
-        $output = Artisan::output();
-        Log::info($output);
-        if ($this->notify) {
-            preg_match('/outputGifName:(.*\.gif)/', $output, $match);
-            $gifFile = $match[1];
-            // 读取图片文件内容
-            $imageData = file_get_contents($gifFile);
-            // 将图片数据转换为 Base64 编码
-            $base64Image = base64_encode($imageData);
-            Notice::ruliuNotice([
-                'IMAGE' => $base64Image,
-                'TEXT' => PHP_EOL . Str::afterLast($gifFile, '/')
-            ]);
+        if (empty($images)) {
+            return response()->json(['message' => '图片不能为空'], 400);
         }
+        // 创建异步任务(默认是同步执行，可自行调整配置)
+        dispatch(new ImagesMergeVideo($images));
+        return response()->json(['message' => '任务已提交']);
     }
 }
