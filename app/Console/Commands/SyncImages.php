@@ -106,7 +106,7 @@ class SyncImages extends Command
 
         // 使用递归遍历目录及子目录
         $iterator = new \RecursiveIteratorIterator(
-            new \RecursiveDirectoryIterator($directory, \FilesystemIterator::SKIP_DOTS)
+            new \RecursiveDirectoryIterator($directory, \FilesystemIterator::SKIP_DOTS | \FilesystemIterator::FOLLOW_SYMLINKS)
         );
 
         foreach ($iterator as $file) {
@@ -139,7 +139,7 @@ class SyncImages extends Command
     {
         $prompt = mb_convert_encoding(substr($exifData['EXIF']['UserComment'], 8), 'UTF-8', 'UTF-16');
         // 用于将相同参数的图片归为一组
-        $promptHash = substr(hash('sha256', $prompt), 0, 8);
+        $promptHash = substr(hash('sha256', preg_replace('/Seed: \d*?,/', '', $prompt)), 0, 8);
         // 优先从文件名提取（stable diffusion可以设置prompt hash到文件名，可以考虑优先使用）
 //        if (preg_match('/[\-\_](.{8,9}).jpeg$/', $exifData['FILE']['FileName'], $matches) === 1) {
 //            $promptHash = $matches[1];
