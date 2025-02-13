@@ -29,13 +29,13 @@ class ImageController extends Controller
     }
 
     /**
-     * 合集列表
+     * 合集列表 todo 单独建表
      * @param Request $request
      * @return mixed
      */
     public function collections(Request $request) {
         // 获取分组数据，并按时间排序
-        $result = Image::select(['prompt_hash', 'modify_time', 'width', 'height'])->orderBy('modify_time', 'desc')->paginate(5);
+        $result = Image::select(['prompt_hash', 'modify_time', 'width', 'height'])->groupBy('prompt_hash')->orderBy('modify_time', 'desc')->paginate(5);
         $items = $result->getCollection();
         // 获取分组下的图片数据
         $images = Image::select(['id', 'file_path', 'prompt_hash', 'prompt'])->whereIn('prompt_hash', $items->pluck('prompt_hash'))->get();

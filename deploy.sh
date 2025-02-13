@@ -27,8 +27,8 @@ if [[ -x "$(command -v php)" &&  $(php -r "echo PHP_VERSION_ID;") -ge 80200 ]]; 
     echo "✅ composer install 执行成功"
 
     # 检查.env中APP_KEY是否已设置，如未设置则生成
-    if [ -z "$(grep APP_KEY .env)" ]; then
-        echo "正在生成APP_KEY"
+    if [ -z "$(grep '^APP_KEY=' .env | cut -d'=' -f2)" ]; then
+    echo "正在生成APP_KEY"
         php artisan key:generate
     fi
 
