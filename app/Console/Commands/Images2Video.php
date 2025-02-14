@@ -168,6 +168,9 @@ class Images2Video extends Command
                 $this->error('视频文件存储失败');
                 return;
             }
+            if (file_exists($outputGifName)) {
+                Storage::put(basename($outputGifName), file_get_contents($outputGifName));
+            }
             $video = new Video();
             $video->file_name = $fileName;
             $video->file_path = $outputFileName;

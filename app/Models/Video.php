@@ -21,4 +21,8 @@ class Video extends Model
     public function getUrlAttribute() {
         return Storage::url($this->attributes['file_name']);
     }
+
+    public function getPosterAttribute($value) {
+        return Storage::url(basename($value));
+    }
 }

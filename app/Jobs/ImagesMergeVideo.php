@@ -36,7 +36,7 @@ class ImagesMergeVideo implements ShouldQueue
      */
     public function handle()
     {
-        $exitCode = Artisan::call('ffmpeg:i2v', ['--i' => $this->images]);
+        $exitCode = Artisan::call('ffmpeg:i2v', ['--i' => $this->images, '--gif' => true]);
         Log::info($exitCode);
         $output = Artisan::output();
         Log::info($output);
