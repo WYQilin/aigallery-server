@@ -1,6 +1,10 @@
 <!-- PROJECT LOGO -->
 <br />
 
+[![Laravel](https://img.shields.io/badge/Laravel-11.x-brightgreen.svg)](https://laravel.com)
+[![License](https://img.shields.io/github/license/WYQilin/aigallery.svg)](https://github.com/WYQilin/aigallery/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/WYQilin/aigallery.svg?style=social&label=Stars)](https://github.com/WYQilin/aigallery)
+
 <!-- PROJECT LOGO -->
 <p align="center">
   <a href="https://github.com/WYQilin/aigallery-server">
@@ -22,17 +26,17 @@
  
 ## 目录
 
-- [项目介绍](#📖项目介绍)
-- [预览体验](#👀预览体验)
+- [项目介绍](https://github.com/WYQilin/aigallery-server?tab=readme-ov-file#%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D)
+- [预览体验](https://github.com/WYQilin/aigallery-server?tab=readme-ov-file#%E9%A2%84%E8%A7%88%E4%BD%93%E9%AA%8C)
     - [截图示例](#截图示例)
     - [在线体验](#在线体验)
-- [功能介绍](#🏷️功能介绍)
-- [安装部署](#📦安装部署)
+- [功能介绍](https://github.com/WYQilin/aigallery-server?tab=readme-ov-file#%EF%B8%8F%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D)
+- [安装部署](https://github.com/WYQilin/aigallery-server?tab=readme-ov-file#%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2)
   - [开发前的配置要求](#开发前的配置要求)
   - [快速开始](#快速开始)
-- [联系作者](#📧联系作者)
-- [License](#©️License)
-- [鸣谢](#🔗鸣谢)
+- [联系作者](https://github.com/WYQilin/aigallery-server?tab=readme-ov-file#%E8%81%94%E7%B3%BB%E4%BD%9C%E8%80%85)
+- [License](https://github.com/WYQilin/aigallery-server?tab=readme-ov-file#%EF%B8%8Flicense)
+- [鸣谢](https://github.com/WYQilin/aigallery-server?tab=readme-ov-file#%E9%B8%A3%E8%B0%A2)
 
 ## 📖项目介绍
 「奇绘图册」一款帮AI绘画爱好者记录和维护绘图作品的小程序。旨在让大家能够便捷的拥有一个个人画廊工具。
